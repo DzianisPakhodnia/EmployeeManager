@@ -28,8 +28,6 @@ namespace EmployeeManager.Presenters
             _employeesView.AddEmployeeClicked += OnAddEmployeeClicked;
             _employeesView.DeleteEmployeeClicked += OnDeleteEmployeeClicked;
             _employeesView.GenerateReportClicked += OnGenerateReportClicked;
-
-
         }
 
         public void Initialize()
@@ -75,7 +73,7 @@ namespace EmployeeManager.Presenters
                 string.IsNullOrWhiteSpace(employee.Position) ||
                 employee.BirthYear < 1900 || employee.Salary <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Некорректные данные для добавления сотрудника.");
+                _employeesView.ShowError("Некорректные данные для добавления сотрудника.");
                 return;
             }
 
@@ -91,7 +89,7 @@ namespace EmployeeManager.Presenters
             var selectedId = _employeesView.SelectedEmployeeId;
             if (selectedId == null)
             {
-                MessageBox.Show("Пожалуйста, выберите сотрудника для удаления.");
+                _employeesView.ShowMessage("Пожалуйста, выберите сотрудника для удаления.");
                 return;
             }
 

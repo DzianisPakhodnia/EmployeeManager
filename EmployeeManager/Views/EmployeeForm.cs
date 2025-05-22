@@ -15,14 +15,12 @@ namespace EmployeeManager.Views
         public event EventHandler AddEmployeeClicked;
         public event EventHandler DeleteEmployeeClicked;
         public event EventHandler GenerateReportClicked;
+
         public EmployeesForm(IEmployeeRepository repository, IReportService reportService)
         {
             InitializeComponent();
-
             presenter = new EmployeesPresenter(this, repository, reportService);
         }
-
-
 
         public string SelectedPosition => comboBoxPositions.SelectedItem?.ToString();
 
@@ -39,7 +37,6 @@ namespace EmployeeManager.Views
             }
         }
 
-
         public Employee NewEmployeeData
         {
             get
@@ -55,17 +52,10 @@ namespace EmployeeManager.Views
             }
         }
 
-
-        
-
-
-
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
             presenter.Initialize();
-
         }
-
 
         public void SetPositions(IEnumerable<string> positions)
         {
@@ -75,11 +65,9 @@ namespace EmployeeManager.Views
                 comboBoxPositions.SelectedIndex = 0;
         }
 
-
         public void ShowEmployees(IEnumerable<Employee> employees)
         {
             dataGridViewEmployees.Rows.Clear();
-
             foreach (var emp in employees)
             {
                 int rowIndex = dataGridViewEmployees.Rows.Add(
@@ -93,8 +81,6 @@ namespace EmployeeManager.Views
                 dataGridViewEmployees.Rows[rowIndex].Tag = emp;
             }
         }
-
-        
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
@@ -153,10 +139,9 @@ namespace EmployeeManager.Views
                 }
                 else
                 {
-                    return null; // Пользователь отменил
+                    return null;
                 }
             }
         }
-
     }
 }

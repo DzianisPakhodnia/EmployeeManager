@@ -59,7 +59,7 @@
             // 
             this.buttonAddEmployee.Location = new System.Drawing.Point(63, 239);
             this.buttonAddEmployee.Name = "buttonAddEmployee";
-            this.buttonAddEmployee.Size = new System.Drawing.Size(150, 45);
+            this.buttonAddEmployee.Size = new System.Drawing.Size(150, 61);
             this.buttonAddEmployee.TabIndex = 1;
             this.buttonAddEmployee.Text = "Добавить сотрудника";
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
@@ -67,22 +67,26 @@
             // 
             // buttonDeleteEmployee
             // 
-            this.buttonDeleteEmployee.Location = new System.Drawing.Point(983, 342);
+            this.buttonDeleteEmployee.BackColor = System.Drawing.Color.Tomato;
+            this.buttonDeleteEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDeleteEmployee.Location = new System.Drawing.Point(983, 391);
             this.buttonDeleteEmployee.Name = "buttonDeleteEmployee";
-            this.buttonDeleteEmployee.Size = new System.Drawing.Size(150, 39);
+            this.buttonDeleteEmployee.Size = new System.Drawing.Size(150, 61);
             this.buttonDeleteEmployee.TabIndex = 2;
             this.buttonDeleteEmployee.Text = "Удалить сотрудника";
-            this.buttonDeleteEmployee.UseVisualStyleBackColor = true;
+            this.buttonDeleteEmployee.UseVisualStyleBackColor = false;
             this.buttonDeleteEmployee.Click += new System.EventHandler(this.buttonDeleteEmployee_Click);
             // 
             // buttonGenerateExcelReport
             // 
-            this.buttonGenerateExcelReport.Location = new System.Drawing.Point(983, 413);
+            this.buttonGenerateExcelReport.BackColor = System.Drawing.Color.Lime;
+            this.buttonGenerateExcelReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonGenerateExcelReport.Location = new System.Drawing.Point(983, 307);
             this.buttonGenerateExcelReport.Name = "buttonGenerateExcelReport";
-            this.buttonGenerateExcelReport.Size = new System.Drawing.Size(150, 39);
+            this.buttonGenerateExcelReport.Size = new System.Drawing.Size(150, 61);
             this.buttonGenerateExcelReport.TabIndex = 3;
             this.buttonGenerateExcelReport.Text = "Отчёт Excel";
-            this.buttonGenerateExcelReport.UseVisualStyleBackColor = true;
+            this.buttonGenerateExcelReport.UseVisualStyleBackColor = false;
             this.buttonGenerateExcelReport.Click += new System.EventHandler(this.buttonGenerateExcelReport_Click);
             // 
             // label1
@@ -118,7 +122,7 @@
             this.ColumnSalary});
             this.dataGridViewEmployees.Location = new System.Drawing.Point(12, 152);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(615, 300);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(615, 325);
             this.dataGridViewEmployees.TabIndex = 6;
             // 
             // ColumnId
@@ -165,9 +169,10 @@
             this.groupBox1.Controls.Add(this.textBoxPosition);
             this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Controls.Add(this.buttonAddEmployee);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(656, 152);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 300);
+            this.groupBox1.Size = new System.Drawing.Size(290, 325);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавление сотрудника";
@@ -177,7 +182,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(23, 193);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.Size = new System.Drawing.Size(84, 20);
             this.label6.TabIndex = 9;
             this.label6.Text = "Зарплата";
             // 
@@ -186,7 +191,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(22, 155);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.Size = new System.Drawing.Size(118, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Год рождения";
             // 
@@ -195,7 +200,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(22, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.Size = new System.Drawing.Size(81, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Фамилия";
             // 
@@ -204,7 +209,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(23, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(95, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Должность";
             // 
@@ -213,7 +218,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(23, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.Size = new System.Drawing.Size(40, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Имя";
             // 
@@ -221,41 +226,42 @@
             // 
             this.textBoxSalary.Location = new System.Drawing.Point(148, 190);
             this.textBoxSalary.Name = "textBoxSalary";
-            this.textBoxSalary.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSalary.Size = new System.Drawing.Size(100, 26);
             this.textBoxSalary.TabIndex = 5;
             // 
             // textBoxBirthYear
             // 
             this.textBoxBirthYear.Location = new System.Drawing.Point(148, 155);
             this.textBoxBirthYear.Name = "textBoxBirthYear";
-            this.textBoxBirthYear.Size = new System.Drawing.Size(100, 20);
+            this.textBoxBirthYear.Size = new System.Drawing.Size(100, 26);
             this.textBoxBirthYear.TabIndex = 4;
             // 
             // textBoxSurname
             // 
             this.textBoxSurname.Location = new System.Drawing.Point(148, 65);
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSurname.Size = new System.Drawing.Size(100, 26);
             this.textBoxSurname.TabIndex = 3;
             // 
             // textBoxPosition
             // 
             this.textBoxPosition.Location = new System.Drawing.Point(148, 110);
             this.textBoxPosition.Name = "textBoxPosition";
-            this.textBoxPosition.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPosition.Size = new System.Drawing.Size(100, 26);
             this.textBoxPosition.TabIndex = 3;
             // 
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(148, 29);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.Size = new System.Drawing.Size(100, 26);
             this.textBoxName.TabIndex = 2;
             // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.BlanchedAlmond;
             this.ClientSize = new System.Drawing.Size(1161, 514);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewEmployees);

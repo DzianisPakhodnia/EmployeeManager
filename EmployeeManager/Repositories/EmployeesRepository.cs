@@ -18,6 +18,21 @@ namespace EmployeeManager.Repositories
             _connectionString = connectionString;
         }
 
+
+        private Employee ReadEmployee(SqlDataReader reader)
+        {
+            return new Employee
+            {
+                Id = reader.GetInt32(0),
+                Name = reader.GetString(1),
+                Surname = reader.GetString(2),
+                Position = reader.GetString(3),
+                BirthYear = reader.GetInt32(4),
+                Salary = reader.GetDecimal(5)
+            };
+        }
+
+
         public void AddEmployee(Employee employee)
         {
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -69,18 +84,10 @@ namespace EmployeeManager.Repositories
                     {
                         while (reader.Read())
                         {
-                            var employee = new Employee
-                            {
-                                Id = reader.GetInt32(0),
-                                Name = reader.GetString(1),
-                                Surname = reader.GetString(2),
-                                Position = reader.GetString(3),
-                                BirthYear = reader.GetInt32(4),
-                                Salary = reader.GetDecimal(5)
-                            };
-
+                            var employee = ReadEmployee(reader);
                             employees.Add(employee);
                         }
+
                     }
                 }
             }
@@ -118,9 +125,9 @@ namespace EmployeeManager.Repositories
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
                 string query = @"
-            SELECT Position, AVG(Salary) AS AverageSalary
-            FROM Employees
-            GROUP BY Position";
+                        SELECT Position, AVG(Salary) AS AverageSalary
+                        FROM Employees
+                        GROUP BY Position";
 
                 using (SqlCommand command = new SqlCommand(query, sqlConnection))
                 {
@@ -159,18 +166,10 @@ namespace EmployeeManager.Repositories
                     {
                         while (reader.Read())
                         {
-                            var employee = new Employee
-                            {
-                                Id = reader.GetInt32(0),
-                                Name = reader.GetString(1),
-                                Surname = reader.GetString(2),
-                                Position = reader.GetString(3),
-                                BirthYear = reader.GetInt32(4),
-                                Salary = reader.GetDecimal(5)
-                            };
-
+                            var employee = ReadEmployee(reader);
                             employees.Add(employee);
                         }
+
                     }
                 }
             }
@@ -178,9 +177,6 @@ namespace EmployeeManager.Repositories
             return employees;
 
         }
-            
-            
 
-        
     }
 }
