@@ -22,7 +22,8 @@ namespace EmployeeManager.Views
             presenter = new EmployeesPresenter(this, repository);
         }
 
-        public string SelectedPosition => throw new NotImplementedException();
+
+        public string SelectedPosition => comboBoxPositions.SelectedItem?.ToString();
 
         public int? SelectedEmployeeId => throw new NotImplementedException();
 
@@ -47,10 +48,23 @@ namespace EmployeeManager.Views
         public event EventHandler DeleteEmployeeClicked;
         public event EventHandler GenerateReportClicked;
 
+
+
+        private void EmployeeForm_Load(object sender, EventArgs e)
+        {
+            presenter.Initialize();
+
+        }
+
+
         public void SetPositions(IEnumerable<string> positions)
         {
-            throw new NotImplementedException();
+            comboBoxPositions.Items.Clear();
+            comboBoxPositions.Items.AddRange(positions.ToArray());
+            if (comboBoxPositions.Items.Count > 0)
+                comboBoxPositions.SelectedIndex = 0;
         }
+
 
         public void ShowEmployees(IEnumerable<Employee> employees)
         {
@@ -69,15 +83,16 @@ namespace EmployeeManager.Views
             }
         }
 
-        private void EmployeeForm_Load(object sender, EventArgs e)
-        {
-            PositionFilterChanged?.Invoke(this, EventArgs.Empty);
-
-        }
+        
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
             AddEmployeeClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PositionFilterChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

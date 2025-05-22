@@ -22,6 +22,12 @@ namespace EmployeeManager.Presenters
             _employeesView.AddEmployeeClicked += OnAddEmployeeClicked;
         }
 
+        public void Initialize()
+        {
+            LoadPositions();
+            LoadEmployees();
+        }
+
         private void LoadEmployees()
         {
             var employees = _employeeRepository.GetAllEmployees();
@@ -30,13 +36,24 @@ namespace EmployeeManager.Presenters
 
         private void LoadPositions()
         {
-            var positions = _employeeRepository.GetAllPositions();
+            var positions = _employeeRepository.GetAllPositions().ToList();
+            positions.Insert(0, string.Empty);
             _employeesView.SetPositions(positions);
         }
 
         private void OnPositionFilterChanged(object sender, EventArgs e)
         {
-            LoadEmployees();
+            string selectedPosition = _employeesView.SelectedPosition;
+
+            if (string.IsNullOrWhiteSpace(selectedPosition))
+            {
+                LoadEmployees(); 
+            }
+            else
+            {
+                var employees = _employeeRepository.GetEmployeesByPosition(selectedPosition);
+                _employeesView.ShowEmployees(employees);
+            }
         }
 
         private void OnAddEmployeeClicked(object sender, EventArgs e)
@@ -55,8 +72,5 @@ namespace EmployeeManager.Presenters
             _employeeRepository.AddEmployee(employee);
             LoadEmployees();
         }
-
-
-
     }
 }

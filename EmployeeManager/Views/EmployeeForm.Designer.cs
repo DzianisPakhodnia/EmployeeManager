@@ -32,7 +32,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,14 +92,15 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Фильтр по должности:";
             // 
-            // comboBox1
+            // comboBoxPositions
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(489, 62);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 5;
+            this.comboBoxPositions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxPositions.FormattingEnabled = true;
+            this.comboBoxPositions.Location = new System.Drawing.Point(489, 62);
+            this.comboBoxPositions.Name = "comboBoxPositions";
+            this.comboBoxPositions.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxPositions.TabIndex = 5;
+            this.comboBoxPositions.SelectedIndexChanged += new System.EventHandler(this.comboBoxPositions_SelectedIndexChanged);
             // 
             // dataGridViewEmployees
             // 
@@ -248,7 +249,7 @@
             this.ClientSize = new System.Drawing.Size(1161, 514);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewEmployees);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxPositions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -269,7 +270,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxPositions;
         private System.Windows.Forms.DataGridView dataGridViewEmployees;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSurname;

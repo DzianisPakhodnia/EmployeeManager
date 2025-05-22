@@ -80,12 +80,66 @@ namespace EmployeeManager.Repositories
         }
         public IEnumerable<string> GetAllPositions()
         {
-            throw new NotImplementedException();
+            var positions = new List<string>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT DISTINCT Position FROM Employees";
+
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    sqlConnection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            positions.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+
+            return positions;
         }
 
         public IEnumerable<Employee> GetEmployeesByPosition(string position)
         {
-            throw new NotImplementedException();
+            var employees = new List<Employee>();
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                sqlConnection.Open();
+
+                var query = "SELECT Name, Surname, Position, BirthYear, Salary FROM Employees WHERE Position = @Position";
+
+                using (var command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@Position", position);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var employee = new Employee
+                            {
+                                Name = reader.GetString(0),
+                                Surname = reader.GetString(1),
+                                Position = reader.GetString(2),
+                                BirthYear = reader.GetInt32(3),
+                                Salary = reader.GetDecimal(4)
+                            };
+
+                            employees.Add(employee);
+                        }
+                    }
+                }
+            }
+
+            return employees;
+
         }
+            
+            
+
+        
     }
 }
