@@ -1,6 +1,6 @@
 ﻿namespace EmployeeManager.Views
 {
-    partial class EmployeeForm
+    partial class EmployeesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBirthYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 191);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(615, 300);
-            this.dataGridView1.TabIndex = 0;
             // 
             // button1
             // 
@@ -91,33 +88,78 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 5;
             // 
-            // EmployeeForm
+            // dataGridViewEmployees
+            // 
+            this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnName,
+            this.ColumnSurname,
+            this.ColumnPosition,
+            this.ColumnBirthYear,
+            this.ColumnSalary});
+            this.dataGridViewEmployees.Location = new System.Drawing.Point(43, 152);
+            this.dataGridViewEmployees.Name = "dataGridViewEmployees";
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(615, 300);
+            this.dataGridViewEmployees.TabIndex = 6;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Имя";
+            this.ColumnName.Name = "ColumnName";
+            // 
+            // ColumnSurname
+            // 
+            this.ColumnSurname.HeaderText = "Фамилия";
+            this.ColumnSurname.Name = "ColumnSurname";
+            // 
+            // ColumnPosition
+            // 
+            this.ColumnPosition.HeaderText = "Должность";
+            this.ColumnPosition.Name = "ColumnPosition";
+            // 
+            // ColumnBirthYear
+            // 
+            this.ColumnBirthYear.HeaderText = "Год рождения";
+            this.ColumnBirthYear.Name = "ColumnBirthYear";
+            // 
+            // ColumnSalary
+            // 
+            this.ColumnSalary.HeaderText = "Зарплата";
+            this.ColumnSalary.Name = "ColumnSalary";
+            // 
+            // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 514);
+            this.Controls.Add(this.dataGridViewEmployees);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "EmployeeForm";
+            this.Name = "EmployeesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Форма сотрудников";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.EmployeeForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridViewEmployees;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBirthYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalary;
     }
 }

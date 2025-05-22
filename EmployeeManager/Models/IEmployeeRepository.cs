@@ -13,5 +13,8 @@ namespace EmployeeManager.Models
 
         IEnumerable<Employee> GetAllEmployees();
         IEnumerable<Employee> GetEmployeesByPosition(string position);
+        IEnumerable<string> GetAllPositions();
+
+
     }
 }
