@@ -30,7 +30,7 @@
         {
             this.buttonAddEmployee = new System.Windows.Forms.Button();
             this.buttonDeleteEmployee = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonGenerateExcelReport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
@@ -75,14 +75,15 @@
             this.buttonDeleteEmployee.UseVisualStyleBackColor = true;
             this.buttonDeleteEmployee.Click += new System.EventHandler(this.buttonDeleteEmployee_Click);
             // 
-            // button3
+            // buttonGenerateExcelReport
             // 
-            this.button3.Location = new System.Drawing.Point(983, 413);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 39);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Отчёт";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonGenerateExcelReport.Location = new System.Drawing.Point(983, 413);
+            this.buttonGenerateExcelReport.Name = "buttonGenerateExcelReport";
+            this.buttonGenerateExcelReport.Size = new System.Drawing.Size(150, 39);
+            this.buttonGenerateExcelReport.TabIndex = 3;
+            this.buttonGenerateExcelReport.Text = "Отчёт Excel";
+            this.buttonGenerateExcelReport.UseVisualStyleBackColor = true;
+            this.buttonGenerateExcelReport.Click += new System.EventHandler(this.buttonGenerateExcelReport_Click);
             // 
             // label1
             // 
@@ -260,7 +261,7 @@
             this.Controls.Add(this.dataGridViewEmployees);
             this.Controls.Add(this.comboBoxPositions);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonGenerateExcelReport);
             this.Controls.Add(this.buttonDeleteEmployee);
             this.Name = "EmployeesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -277,7 +278,7 @@
         #endregion
         private System.Windows.Forms.Button buttonAddEmployee;
         private System.Windows.Forms.Button buttonDeleteEmployee;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonGenerateExcelReport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxPositions;
         private System.Windows.Forms.DataGridView dataGridViewEmployees;

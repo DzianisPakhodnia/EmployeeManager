@@ -111,6 +111,37 @@ namespace EmployeeManager.Repositories
             return positions;
         }
 
+        public IEnumerable<(string Position, decimal AverageSalary)> GetAverageSalaryByPosition()
+        {
+            var result = new List<(string Position, decimal AverageSalary)>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT Position, AVG(Salary) AS AverageSalary
+            FROM Employees
+            GROUP BY Position";
+
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    sqlConnection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string position = reader.GetString(0);
+                            decimal averageSalary = reader.GetDecimal(1);
+
+                            result.Add((position, averageSalary));
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public IEnumerable<Employee> GetEmployeesByPosition(string position)
         {
             var employees = new List<Employee>();

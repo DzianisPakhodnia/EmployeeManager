@@ -1,14 +1,9 @@
 ﻿using EmployeeManager.Models;
 using EmployeeManager.Presenters;
-using EmployeeManager.Repositories;
+using EmployeeManager.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeeManager.Views
@@ -16,11 +11,17 @@ namespace EmployeeManager.Views
     public partial class EmployeesForm : Form, IEmployeesView
     {
         private EmployeesPresenter presenter;
-        public EmployeesForm(IEmployeeRepository repository)
+        public event EventHandler PositionFilterChanged;
+        public event EventHandler AddEmployeeClicked;
+        public event EventHandler DeleteEmployeeClicked;
+        public event EventHandler GenerateReportClicked;
+        public EmployeesForm(IEmployeeRepository repository, IReportService reportService)
         {
             InitializeComponent();
-            presenter = new EmployeesPresenter(this, repository);
+
+            presenter = new EmployeesPresenter(this, repository, reportService);
         }
+
 
 
         public string SelectedPosition => comboBoxPositions.SelectedItem?.ToString();
@@ -55,10 +56,7 @@ namespace EmployeeManager.Views
         }
 
 
-        public event EventHandler PositionFilterChanged;
-        public event EventHandler AddEmployeeClicked;
-        public event EventHandler DeleteEmployeeClicked;
-        public event EventHandler GenerateReportClicked;
+        
 
 
 
@@ -111,6 +109,53 @@ namespace EmployeeManager.Views
         private void buttonDeleteEmployee_Click(object sender, EventArgs e)
         {
             DeleteEmployeeClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonGenerateExcelReport_Click(object sender, EventArgs e)
+        {
+            GenerateReportClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public string GetSaveFilePath()
+        {
+            using (var dlg = new SaveFileDialog())
+            {
+                dlg.Filter = "Excel Files|*.xlsx";
+                dlg.Title = "Сохранить отчет";
+                dlg.FileName = "Средняя_зарплата.xlsx";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                    return dlg.FileName;
+                else
+                    return null;
+            }
+        }
+
+        public string AskSaveFilePath(string defaultFileName)
+        {
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.FileName = defaultFileName;
+                sfd.Filter = "Excel Files|*.xlsx|All Files|*.*";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    return sfd.FileName;
+                }
+                else
+                {
+                    return null; // Пользователь отменил
+                }
+            }
         }
 
     }

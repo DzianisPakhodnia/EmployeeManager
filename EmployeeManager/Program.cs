@@ -1,4 +1,5 @@
 ﻿using EmployeeManager.Repositories;
+using EmployeeManager.Services;
 using EmployeeManager.Views;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace EmployeeManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             string connectionString = ConfigurationManager.ConnectionStrings["EmployeeDb"].ConnectionString;
-            Application.Run(new EmployeesForm(new EmployeesRepository(connectionString)));
+            Application.Run(new EmployeesForm(new EmployeesRepository(connectionString), new ReportService()));
         }
     }
 }

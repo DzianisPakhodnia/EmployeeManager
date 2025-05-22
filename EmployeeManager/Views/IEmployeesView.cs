@@ -13,12 +13,18 @@ namespace EmployeeManager.Presenters
         event EventHandler AddEmployeeClicked;
         event EventHandler DeleteEmployeeClicked;
         event EventHandler GenerateReportClicked;
-
+        
         string SelectedPosition { get; }
         int? SelectedEmployeeId { get; }
         Employee NewEmployeeData { get; }
         void SetPositions(IEnumerable<string> positions);
         void ShowEmployees(IEnumerable<Employee> employees);
+        string GetSaveFilePath();
+
+        void ShowMessage(string message);
+        void ShowError(string message);
+        string AskSaveFilePath(string defaultFileName);
+
 
     }
 }

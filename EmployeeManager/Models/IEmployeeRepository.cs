@@ -14,6 +14,7 @@ namespace EmployeeManager.Models
         IEnumerable<Employee> GetAllEmployees();
         IEnumerable<Employee> GetEmployeesByPosition(string position);
         IEnumerable<string> GetAllPositions();
+        IEnumerable<(string Position, decimal AverageSalary)> GetAverageSalaryByPosition();
 
 
     }
