@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManager.Presenters
 {
-    public class EmployeesPresenter : IEmployeesPresenter
+    public class EmployeesPresenter 
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IEmployeesView _employeesView;
@@ -19,6 +19,7 @@ namespace EmployeeManager.Presenters
             _employeesView = employeesView;
 
             _employeesView.PositionFilterChanged += OnPositionFilterChanged;
+            _employeesView.AddEmployeeClicked += OnAddEmployeeClicked;
         }
 
         private void LoadEmployees()
@@ -38,6 +39,22 @@ namespace EmployeeManager.Presenters
             LoadEmployees();
         }
 
+        private void OnAddEmployeeClicked(object sender, EventArgs e)
+        {
+            var employee = _employeesView.NewEmployeeData;
+
+            if (string.IsNullOrWhiteSpace(employee.Name) ||
+                string.IsNullOrWhiteSpace(employee.Surname) ||
+                string.IsNullOrWhiteSpace(employee.Position) ||
+                employee.BirthYear < 1900 || employee.Salary <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Некорректные данные для добавления сотрудника.");
+                return;
+            }
+
+            _employeeRepository.AddEmployee(employee);
+            LoadEmployees();
+        }
 
 
 

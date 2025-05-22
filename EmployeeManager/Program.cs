@@ -1,6 +1,8 @@
-﻿using EmployeeManager.Views;
+﻿using EmployeeManager.Repositories;
+using EmployeeManager.Views;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +19,8 @@ namespace EmployeeManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmployeesForm());
+            string connectionString = ConfigurationManager.ConnectionStrings["EmployeeDb"].ConnectionString;
+            Application.Run(new EmployeesForm(new EmployeesRepository(connectionString)));
         }
     }
 }

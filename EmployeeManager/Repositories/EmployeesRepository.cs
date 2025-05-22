@@ -20,8 +20,25 @@ namespace EmployeeManager.Repositories
 
         public void AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+                               INSERT INTO Employees (Name, Surname, Position, BirthYear, Salary)
+                               VALUES (@Name, @Surname, @Position, @BirthYear, @Salary)";
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@Name", employee.Name);
+                    command.Parameters.AddWithValue("@Surname", employee.Surname);
+                    command.Parameters.AddWithValue("@Position", employee.Position);
+                    command.Parameters.AddWithValue("@BirthYear", employee.BirthYear);
+                    command.Parameters.AddWithValue("@Salary", employee.Salary);
+
+                    sqlConnection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
+
 
         public void DeleteEmployee(Employee employee)
         {

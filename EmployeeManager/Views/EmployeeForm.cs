@@ -16,17 +16,31 @@ namespace EmployeeManager.Views
     public partial class EmployeesForm : Form, IEmployeesView
     {
         private EmployeesPresenter presenter;
-        public EmployeesForm()
+        public EmployeesForm(IEmployeeRepository repository)
         {
             InitializeComponent();
-            presenter = new EmployeesPresenter(this, new EmployeesRepository("Data Source=DENPC;Initial Catalog=EmployeeManagerDb;Integrated Security=True;"));
+            presenter = new EmployeesPresenter(this, repository);
         }
 
         public string SelectedPosition => throw new NotImplementedException();
 
         public int? SelectedEmployeeId => throw new NotImplementedException();
 
-        public Employee NewEmployeeData => throw new NotImplementedException();
+        public Employee NewEmployeeData
+        {
+            get
+            {
+                return new Employee
+                {
+                    Name = textBoxName.Text.Trim(),
+                    Surname = textBoxSurname.Text.Trim(),
+                    Position = textBoxPosition.Text.Trim(),
+                    BirthYear = int.TryParse(textBoxBirthYear.Text, out int birthYear) ? birthYear : 0,
+                    Salary = decimal.TryParse(textBoxSalary.Text, out decimal salary) ? salary : 0
+                };
+            }
+        }
+
 
         public event EventHandler PositionFilterChanged;
         public event EventHandler AddEmployeeClicked;
@@ -59,6 +73,11 @@ namespace EmployeeManager.Views
         {
             PositionFilterChanged?.Invoke(this, EventArgs.Empty);
 
+        }
+
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        {
+            AddEmployeeClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }
