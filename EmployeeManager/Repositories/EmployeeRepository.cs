@@ -9,6 +9,14 @@ namespace EmployeeManager.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+        private readonly string _connectionString;
+
+
+        public EmployeeRepository(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
         public void AddEmployee(Employee employee)
         {
             throw new NotImplementedException();
