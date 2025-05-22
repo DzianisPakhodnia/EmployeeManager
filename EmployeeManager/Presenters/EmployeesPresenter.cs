@@ -85,11 +85,20 @@ namespace EmployeeManager.Presenters
                 return;
             }
 
-            _employeeRepository.DeleteEmployee(selectedId.Value);
-            LoadEmployees();
-            LoadPositions();
+            var result = System.Windows.Forms.MessageBox.Show(
+                "Вы действительно хотите удалить выбранного сотрудника?",
+                "Подтверждение удаления",
+                System.Windows.Forms.MessageBoxButtons.YesNo,
+                System.Windows.Forms.MessageBoxIcon.Warning);
 
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                _employeeRepository.DeleteEmployee(selectedId.Value);
+                LoadEmployees();
+                LoadPositions();
+            }
         }
+
 
     }
 }

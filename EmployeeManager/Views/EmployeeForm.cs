@@ -25,7 +25,19 @@ namespace EmployeeManager.Views
 
         public string SelectedPosition => comboBoxPositions.SelectedItem?.ToString();
 
-        public int? SelectedEmployeeId => throw new NotImplementedException();
+        public int? SelectedEmployeeId
+        {
+            get
+            {
+                if (dataGridViewEmployees.SelectedRows.Count > 0)
+                {
+                    var employee = dataGridViewEmployees.SelectedRows[0].Tag as Employee;
+                    return employee?.Id;
+                }
+                return null;
+            }
+        }
+
 
         public Employee NewEmployeeData
         {
@@ -73,6 +85,7 @@ namespace EmployeeManager.Views
             foreach (var emp in employees)
             {
                 int rowIndex = dataGridViewEmployees.Rows.Add(
+                    emp.Id,
                     emp.Name,
                     emp.Surname,
                     emp.Position,
@@ -94,5 +107,11 @@ namespace EmployeeManager.Views
         {
             PositionFilterChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        private void buttonDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            DeleteEmployeeClicked?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 }

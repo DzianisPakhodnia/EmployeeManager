@@ -29,27 +29,28 @@
         private void InitializeComponent()
         {
             this.buttonAddEmployee = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonDeleteEmployee = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBirthYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxPosition = new System.Windows.Forms.TextBox();
-            this.textBoxSurname = new System.Windows.Forms.TextBox();
-            this.textBoxBirthYear = new System.Windows.Forms.TextBox();
-            this.textBoxSalary = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxSalary = new System.Windows.Forms.TextBox();
+            this.textBoxBirthYear = new System.Windows.Forms.TextBox();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,14 +65,15 @@
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
             this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
             // 
-            // button2
+            // buttonDeleteEmployee
             // 
-            this.button2.Location = new System.Drawing.Point(983, 342);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Удалить сотрудника";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonDeleteEmployee.Location = new System.Drawing.Point(983, 342);
+            this.buttonDeleteEmployee.Name = "buttonDeleteEmployee";
+            this.buttonDeleteEmployee.Size = new System.Drawing.Size(150, 39);
+            this.buttonDeleteEmployee.TabIndex = 2;
+            this.buttonDeleteEmployee.Text = "Удалить сотрудника";
+            this.buttonDeleteEmployee.UseVisualStyleBackColor = true;
+            this.buttonDeleteEmployee.Click += new System.EventHandler(this.buttonDeleteEmployee_Click);
             // 
             // button3
             // 
@@ -107,6 +109,7 @@
             this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnId,
             this.ColumnName,
             this.ColumnSurname,
             this.ColumnPosition,
@@ -116,6 +119,12 @@
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.Size = new System.Drawing.Size(615, 300);
             this.dataGridViewEmployees.TabIndex = 6;
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "ColumnId";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.Visible = false;
             // 
             // ColumnName
             // 
@@ -162,67 +171,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавление сотрудника";
             // 
-            // textBoxName
+            // label6
             // 
-            this.textBoxName.Location = new System.Drawing.Point(148, 29);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxName.TabIndex = 2;
-            // 
-            // textBoxPosition
-            // 
-            this.textBoxPosition.Location = new System.Drawing.Point(148, 110);
-            this.textBoxPosition.Name = "textBoxPosition";
-            this.textBoxPosition.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPosition.TabIndex = 3;
-            // 
-            // textBoxSurname
-            // 
-            this.textBoxSurname.Location = new System.Drawing.Point(148, 65);
-            this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSurname.TabIndex = 3;
-            // 
-            // textBoxBirthYear
-            // 
-            this.textBoxBirthYear.Location = new System.Drawing.Point(148, 155);
-            this.textBoxBirthYear.Name = "textBoxBirthYear";
-            this.textBoxBirthYear.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBirthYear.TabIndex = 4;
-            // 
-            // textBoxSalary
-            // 
-            this.textBoxSalary.Location = new System.Drawing.Point(148, 190);
-            this.textBoxSalary.Name = "textBoxSalary";
-            this.textBoxSalary.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSalary.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Имя";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Должность";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 68);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Фамилия";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 193);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Зарплата";
             // 
             // label5
             // 
@@ -233,14 +189,67 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Год рождения";
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 193);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Зарплата";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Фамилия";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Должность";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Имя";
+            // 
+            // textBoxSalary
+            // 
+            this.textBoxSalary.Location = new System.Drawing.Point(148, 190);
+            this.textBoxSalary.Name = "textBoxSalary";
+            this.textBoxSalary.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSalary.TabIndex = 5;
+            // 
+            // textBoxBirthYear
+            // 
+            this.textBoxBirthYear.Location = new System.Drawing.Point(148, 155);
+            this.textBoxBirthYear.Name = "textBoxBirthYear";
+            this.textBoxBirthYear.Size = new System.Drawing.Size(100, 20);
+            this.textBoxBirthYear.TabIndex = 4;
+            // 
+            // textBoxSurname
+            // 
+            this.textBoxSurname.Location = new System.Drawing.Point(148, 65);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSurname.TabIndex = 3;
+            // 
+            // textBoxPosition
+            // 
+            this.textBoxPosition.Location = new System.Drawing.Point(148, 110);
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPosition.TabIndex = 3;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(148, 29);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 2;
             // 
             // EmployeesForm
             // 
@@ -252,7 +261,7 @@
             this.Controls.Add(this.comboBoxPositions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonDeleteEmployee);
             this.Name = "EmployeesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Форма сотрудников";
@@ -267,16 +276,11 @@
 
         #endregion
         private System.Windows.Forms.Button buttonAddEmployee;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonDeleteEmployee;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxPositions;
         private System.Windows.Forms.DataGridView dataGridViewEmployees;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSurname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBirthYear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalary;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -288,5 +292,11 @@
         private System.Windows.Forms.TextBox textBoxSurname;
         private System.Windows.Forms.TextBox textBoxPosition;
         private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBirthYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalary;
     }
 }
