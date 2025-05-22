@@ -40,9 +40,18 @@ namespace EmployeeManager.Repositories
         }
 
 
-        public void DeleteEmployee(Employee employee)
+        public void DeleteEmployee(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                string query = "DELETE FROM Employees WHERE Id = @Id";
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    sqlConnection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
         public IEnumerable<Employee> GetAllEmployees()
         {
@@ -109,7 +118,7 @@ namespace EmployeeManager.Repositories
             {
                 sqlConnection.Open();
 
-                var query = "SELECT Name, Surname, Position, BirthYear, Salary FROM Employees WHERE Position = @Position";
+                var query = "SELECT Id, Name, Surname, Position, BirthYear, Salary FROM Employees WHERE Position = @Position";
 
                 using (var command = new SqlCommand(query, sqlConnection))
                 {
@@ -121,11 +130,12 @@ namespace EmployeeManager.Repositories
                         {
                             var employee = new Employee
                             {
-                                Name = reader.GetString(0),
-                                Surname = reader.GetString(1),
-                                Position = reader.GetString(2),
-                                BirthYear = reader.GetInt32(3),
-                                Salary = reader.GetDecimal(4)
+                                Id = reader.GetInt32(0),
+                                Name = reader.GetString(1),
+                                Surname = reader.GetString(2),
+                                Position = reader.GetString(3),
+                                BirthYear = reader.GetInt32(4),
+                                Salary = reader.GetDecimal(5)
                             };
 
                             employees.Add(employee);

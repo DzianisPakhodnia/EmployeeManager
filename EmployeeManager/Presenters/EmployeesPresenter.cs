@@ -17,9 +17,9 @@ namespace EmployeeManager.Presenters
         {
             _employeeRepository = employeeRepository;
             _employeesView = employeesView;
-
             _employeesView.PositionFilterChanged += OnPositionFilterChanged;
             _employeesView.AddEmployeeClicked += OnAddEmployeeClicked;
+            _employeesView.DeleteEmployeeClicked += OnDeleteEmployeeClicked;
         }
 
         public void Initialize()
@@ -70,7 +70,26 @@ namespace EmployeeManager.Presenters
             }
 
             _employeeRepository.AddEmployee(employee);
+
             LoadEmployees();
+            LoadPositions();
         }
+
+
+        private void OnDeleteEmployeeClicked(object sender, EventArgs e)
+        {
+            var selectedId = _employeesView.SelectedEmployeeId;
+            if (selectedId == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Пожалуйста, выберите сотрудника для удаления.");
+                return;
+            }
+
+            _employeeRepository.DeleteEmployee(selectedId.Value);
+            LoadEmployees();
+            LoadPositions();
+
+        }
+
     }
 }

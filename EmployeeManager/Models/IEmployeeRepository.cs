@@ -9,7 +9,7 @@ namespace EmployeeManager.Models
     public interface IEmployeeRepository
     {
         void AddEmployee(Employee employee);
-        void DeleteEmployee(Employee employee);
+        void DeleteEmployee(int id);
 
         IEnumerable<Employee> GetAllEmployees();
         IEnumerable<Employee> GetEmployeesByPosition(string position);
