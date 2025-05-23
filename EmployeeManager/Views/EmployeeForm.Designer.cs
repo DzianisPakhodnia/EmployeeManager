@@ -105,7 +105,7 @@
             this.comboBoxPositions.FormattingEnabled = true;
             this.comboBoxPositions.Location = new System.Drawing.Point(489, 62);
             this.comboBoxPositions.Name = "comboBoxPositions";
-            this.comboBoxPositions.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxPositions.Size = new System.Drawing.Size(216, 24);
             this.comboBoxPositions.TabIndex = 5;
             this.comboBoxPositions.SelectedIndexChanged += new System.EventHandler(this.comboBoxPositions_SelectedIndexChanged);
             // 
