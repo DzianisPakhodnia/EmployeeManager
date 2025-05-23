@@ -91,3 +91,6 @@ INSERT INTO Employees (Name, Surname, Position, BirthYear, Salary) VALUES
 (N'Павел', N'Руденко', N'Менеджер', 1987, 4100.00);
 GO
 ```
+Для удаления пользователя надо выбрать строку, где он находиться
+![image](https://github.com/user-attachments/assets/008e4bfb-1dc8-4a4a-9833-9acfc9fb3550)
+
